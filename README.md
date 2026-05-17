@@ -1,2 +1,2 @@
 # contactapi
-spring boot react application
+spring boot application
