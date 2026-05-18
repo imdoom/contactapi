@@ -1,20 +1,29 @@
 package io.spb.contactapi.domain;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.UuidGenerator;
+
+import static com.fasterxml.jackson.annotation.JsonInclude.Include.NON_DEFAULT;
 
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
-@JsonInclude(JsonInclude.Include.NON_DEFAULT)
-@Table{name = "contacts"}
+@AllArgsConstructor
+@JsonInclude(NON_DEFAULT)
+@Table(name = "contacts")
 
 public class Contact {
     @Id
-    @VvidGenerator
+    @UuidGenerator
     @Column(name = "id", unique = true, updatable = false)
     private String id;
     private String name;
@@ -24,5 +33,4 @@ public class Contact {
     private String address;
     private String status;
     private String photoUrl;
-
 }
